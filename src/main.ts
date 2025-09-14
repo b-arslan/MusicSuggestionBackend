@@ -5,8 +5,13 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
+    const allowedOrigins = [
+      "https://music-suggestion.vercel.app",
+      "https://arslanbugra.com",
+    ];
+
     app.enableCors({
-        origin: 'https://music-suggestion.vercel.app',
+        origin: allowedOrigins,
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: false,
     });
